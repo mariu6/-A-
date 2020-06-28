@@ -1,4 +1,4 @@
-The Teaters application runs by default with local Database no port 27017 
+The Theaters application runs by default with local Database no port 27017 
 
 To install dependencies:
 
