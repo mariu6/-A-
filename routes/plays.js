@@ -10,7 +10,7 @@ router.get("/enroll-play/:playId", isAuth(), handler.get.enrollForPlay);
 router.get("/delete-play/:playId", isAuth(), handler.get.deletePlay);
 
 router.post("/create-play", isAuth(), handler.post.createPlay);
-router.post("/edit-play", isAuth(), handler.post.editPlay);
+router.post("/edit-play/:playId", isAuth(), handler.post.editPlay);
 
 
 module.exports = router; 

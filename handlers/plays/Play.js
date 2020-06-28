@@ -7,12 +7,12 @@ const playSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-            },
+    },
     description: {
         type: String,
         required: true,
         maxlength: [50, "Description too long! Max is 50"],
-        
+
     },
     imageUrl: {
         type: String,

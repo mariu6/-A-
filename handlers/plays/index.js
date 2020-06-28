@@ -36,7 +36,6 @@ module.exports = {
             Play
                 .findById(playId).lean().then((play) => {
                     const isLoggedIn = (req.user !== undefined);
-                    // console.log(play);
                     res.render("plays/edit-play.hbs", {
                         isLoggedIn,
                         username: req.user ? req.user.username : null,
@@ -44,12 +43,10 @@ module.exports = {
                         playId
                     });
                 })
-
         },
         enrollForPlay(req, res) {
             const { playId } = req.params;
             const userId = req.user._id;
-
             return Promise.all([                                                  // Update of related fields in 2 DB's
                 Play.updateOne({ _id: playId }, { $push: { enrolledUsers: userId } }),
                 User.updateOne({ _id: userId }, { $push: { enrolledCourses: playId } })
@@ -68,14 +65,12 @@ module.exports = {
             ]).then(([updatedPlay, deletePlay, updatedUser]) => {
                 res.redirect(`/`)
             }).catch((err) => console.log(err.message, err));
-        }
-
-
-
+        },
     },
     post: {
         createPlay(req, res) {
             const { title, description, imageUrl, isPublic: public } = req.body;        // isPublic: "on" || undefined
+            // console.log(public);
             isPublic = !!public;
             const createdAt = (new Date() + "").slice(0, 24);                           // Date & time only
             const creator = req.user._id;
@@ -86,12 +81,18 @@ module.exports = {
                 }).catch(function (err) {
                     if (err.name === 'ValidationError') {
                         console.error('Error Validating!', err);
+                        const isLoggedIn = (req.user !== undefined);
                         res.status(422).render("plays/create-play.hbs", {
+                            isLoggedIn,
+                            username: req.user ? req.user.username : null,
                             message: err.errors.description || err.errors.imageUrl
                         });
                     } else if (err.name === 'MongoError') {
                         console.error(err);
+                        const isLoggedIn = (req.user !== undefined);
                         res.status(422).render("plays/create-play.hbs", {
+                            isLoggedIn,
+                            username: req.user ? req.user.username : null,
                             message: "Course name already exists!"
                         });
                     } else {
@@ -103,23 +104,21 @@ module.exports = {
         editPlay(req, res) {
             const { title, description, imageUrl, isPublic: public } = req.body;        // isPublic: "on" || undefined
             isPublic = !!public;
-            console.log(object);
-            console.log(req.body);
-            Play.findByIdAndUpdate({ _id: req.params.playId }, { 
-                "title":title,
+            Play.findByIdAndUpdate({ _id: req.params.playId }, {
+                "title": title,
                 "description": description,
                 "imageUrl": imageUrl,
-                "isPublic":isPublic
-             }).then((err, updated) => {
+                "isPublic": isPublic
+            }).then((err, updated) => {
                 if (err) console.log("Update error:    ", err)
                 const isLoggedIn = (req.user !== undefined);
-                console.log(play);
-                res.render("/", {
+                res.render("home.hbs", {
                     isLoggedIn,
                     username: req.user ? req.user.username : null,
-                    play,
+                    updated,
                 });
             })
         },
+
     }
 }

@@ -13,8 +13,8 @@ module.exports = (app) => {                              //  setup of midlewares
         partialsDir: "views/partials",                   // default folder for partials      
         extname: "hbs"
     }));
-
-    app.use(express.static("public"));                    // static files can be found in folder: public
+ 
+    app.use("/static", express.static("static"));                    // static files can be found in folder: public
     app.set("view engine", "hbs");                       // view engine is handlebars  
     app.use(express.json());                             // input from 'form' to be sent as json  
     app.use(cookieParser());                             // for the cookies middleware  

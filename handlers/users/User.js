@@ -8,11 +8,17 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        minlength: [3, "Username too short!"],
+        maxlength: [150, "Username too long! Max is 150"],
+        match: [/^[A-Za-z0-9 ]+$/, "Username is using not valid chars!"],
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        minlength: [3, "Password too short!"],
+        maxlength: [150, "Password too long! Max is 150"],
+        match: [/^[A-Za-z0-9 ]+$/, "Password is using not valid chars!"],
     },
     linkedPlays: [{
         type: ObjectId,
