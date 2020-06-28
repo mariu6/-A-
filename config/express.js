@@ -9,7 +9,7 @@ module.exports = (app) => {                              //  setup of midlewares
     //view engine setup             
     app.engine("hbs", handlebars({                          
         layoutsDir: "views",                             // default folder for views   
-        defaultLayout: "main",                           //  The wrapper with {{> header/navigation}} {{{ body }}} {{> footer}}           
+        defaultLayout: "nest",                           //  The wrapper with {{> header/navigation}} {{{ body }}} {{> footer}}           
         partialsDir: "views/partials",                   // default folder for partials      
         extname: "hbs"
     }));
@@ -18,5 +18,5 @@ module.exports = (app) => {                              //  setup of midlewares
     app.set("view engine", "hbs");                       // view engine is handlebars  
     app.use(express.json());                             // input from 'form' to be sent as json  
     app.use(cookieParser());                             // for the cookies middleware  
-    app.use(express.urlencoded({ extended: false }));    // to be able to get the data from 'form'   
+    app.use(express.urlencoded({ extended: true }));    // to be able to get the data from 'form'   
 }

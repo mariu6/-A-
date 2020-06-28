@@ -1,19 +1,18 @@
 // Insert the EVENT model
 const User = require("../users/User");
-const { validationResult } = require('express-validator');
 const Play = require("./Play");
 const { model } = require("mongoose");
 
 module.exports = {
     get: {
-        createCourse(req, res) {
+        createPlay(req, res) {
             const isLoggedIn = (req.user !== undefined);
             res.render("courses/create-course.hbs", {
                 isLoggedIn,
                 username: req.user ? req.user.username : null,
             });
         },
-        detailsCourse(req, res) {
+        detailsPlay(req, res) {
             const { courseId } = req.params;
             Play
                 .findById(courseId)
@@ -31,7 +30,7 @@ module.exports = {
 
                 })
         },
-        enrollForCourse(req, res) {
+        enrollForPlay(req, res) {
             const { courseId } = req.params;
             const userId = req.user._id;
 
@@ -42,7 +41,7 @@ module.exports = {
                 res.redirect(`/courses/details-course/${courseId}`)
             }).catch((err) => console.log(err.message));
         },
-        deleteCourse(req, res) {
+        deletePlay(req, res) {
             const { courseId } = req.params;
             const userId = req.user._id;
 
@@ -59,7 +58,7 @@ module.exports = {
 
     },
     post: {
-        createCourse(req, res) {
+        createPlay(req, res) {
             const { title, description, imageUrl, isPublic: public } = req.body;        // isPublic: "on" || undefined
             isPublic = !!public;
             const createdAt = (new Date() + "").slice(0, 24);                           // Date & time only

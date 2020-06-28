@@ -40,4 +40,4 @@ playSchema.path("imageUrl").validate(function (url) {       // validation for va
     return (url.startsWith("http://") || url.startsWith("https://")) && (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"));
 }, "Image url is not valid");
 
-module.exports = new Model("Play", playSchema);
+module.exports = new Play("Play", playSchema);

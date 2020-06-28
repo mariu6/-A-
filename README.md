@@ -7,3 +7,5 @@ To install dependencies:
 To start the application:
 
     npm run start
+
+http://localhost:7070/
