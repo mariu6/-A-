@@ -1,7 +1,7 @@
 // Insert the EVENT model
 const User = require("../users/User");
 const { validationResult } = require('express-validator');
-const Model = require("./Model");
+const Play = require("./Play");
 const { model } = require("mongoose");
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
         },
         detailsCourse(req, res) {
             const { courseId } = req.params;
-            Model
+            Play
                 .findById(courseId)
                 .populate("enrolledUsers")
                 .lean().then((course) => {

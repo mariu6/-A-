@@ -1,4 +1,4 @@
-// Insert the EVENT model
+// Insert the EVENT play
 const User = require("../users/User");
 const jwt = require('../../utils/jwt');
 const { cookie } = require('../../config/config');

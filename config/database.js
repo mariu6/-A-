@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dbString = require("./config").dbUrl + "NAME";     // TO DO the name of the DB
+const dbString = require("./config").dbUrl + "theaters";     // TO DO the name of the DB
 
 module.exports = () => {
     return mongoose.connect(dbString, {     // .connect returns promise, exported as a function

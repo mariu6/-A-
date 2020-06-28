@@ -1,5 +1,5 @@
 const home = require("./home");
 const users = require("./users");
-const models = require("./models");
+const plays = require("./plays");
 
-module.exports = { home, users, models }  
+module.exports = { home, users, plays }  

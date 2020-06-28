@@ -1,59 +1,60 @@
-{{#if isLoggedIn}}
-<h1 class="text-center">Courses</h1>
-<section>
-    <a href="/courses/create-course" class="btn btn-warning ">Create Course</a>
-    <form class="search float-right">
-        <label>Search: </label>
-        <input type="text">
-        <input type="submit" class="btn btn-info" value="Search">
-    </form>
+<section class="container">
+    <h1>My Theater Info</h1>
+    <p>Lorem reprehenderit nostrud do do ut ad irure aliquip anim adipisicing nulla ullamco. Non mollit
+        Lorem sunt proident nostrud dolore est minim reprehenderit adipisicing consectetur dolore.
+        Nostrud id amet ad irure irure aute ad veniam deserunt mollit sint pariatur. Velit quis amet
+        aliquip tempor. Dolore culpa deserunt proident nostrud amet consectetur.
+        Exercitation exercitation pariatur deserunt duis. Elit duis aute do ullamco fugiat magna officia
+        ad. Pariatur nulla ut pariatur Lorem pariatur incididunt eu excepteur sint qui. Amet esse et
+        eiusmod officia fugiat aliquip ullamco laboris sint cillum cillum. Elit proident mollit officia
+        tempor aliquip non ea occaecat sunt eiusmod enim nulla anim. Voluptate laborum consequat elit
+        quis cupidatat tempor ad laboris duis non eiusmod.</p>
 </section>
-{{else}}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Video Tutorials</h1>
-        <p class="lead">Start Self-Study Today: It'll Change Your Life</p>
-    </div>
-</div>
-{{/if}}
-{{#if isLoggedIn}}
-<div class="container mt-3">
-    <div class="row ">
-        <div class="card-deck d-flex justify-content-center">
-            {{#each courses}}
-            <div class="card mb-4">
-                <img class="card-img-top" src="{{imageUrl}}" alt="Card image cap" width="400">
-                <div class="card-body">
-                    <h4 class="card-title">{{title}}</h4>
-                </div>
-                <div class="card-footer">
-                    <a href="/courses/details-course/{{_id}}"><button type="button" class="btn btn-info">Details</button></a>
-                    <small class="float-right">{{createdAt}}</small>
-                </div>
-            </div>
-            {{else}}
+<section>
+    {{#if isLoggedIn}}
+    <div class="aux">
+        <h1>Available Plays</h1>
+        <div class="home-buttons">
+            <a class="btn create-play" href="">Create Theater</a>
+            <a class="btn create-play" href="">Sort by Date</a>
+            <a class="btn create-play" href="">Sort by Likes</a>
         </div>
     </div>
-</div>
-<h3 class="text-center">No courses...</h3>
-{{/each}}
-{{else}}
-<h1 class="text-center">Top Courses</h1>
-<div class="container mt-3">
-    <div class="row d-flex justify-content-center">
-
-        <div class="card-deck">
-            {{#each courses}}
-            <div class="card mb-4">
-                <img class="card-img-top" src="{{imageUrl}}" alt="Card image cap" width="400">
-                <div class="card-body">
-                    <h4 class="card-title">{{title}}</h4>
+    {{else}}
+    <h1>Best Rated Plays</h1>
+    {{/if}}
+    <div class="theaters-container">
+        {{#if isLoggedIn}}
+        {{#each plays}}
+        <div>
+            <div class="home-image">
+                <img src="https://media.timeout.com/images/103727744/380/285/image.jpg" alt="Card image cap">
+            </div>
+            <div class="info">
+                <h4>Who's Afraid of Virginia Woolf? by Edward Albee</h4>
+                <div class="info-buttons">
+                    <a class="btn details" href="">Details</a>
+                    <span class="likes">5 likes</span>
                 </div>
             </div>
-            {{else}}
         </div>
+        {{else }}
+        <h4>No plays yet...</h4>
+        {{/each}}
+        {{else}}
+        {{#each plays}}
+        <div>
+            <div class="home-image">
+                <img src="https://media.timeout.com/images/103727744/380/285/image.jpg" alt="Card image cap"
+                    width="400">
+            </div>
+            <div class="info">
+                <h4>Who's Afraid of Virginia Woolf? by Edward Albee</h4>
+            </div>
+        </div>
+        {{else }}
+        <h4>No plays yet...</h4>
+        {{/each}}
+        {{/if}}
     </div>
-    <h4 class="text-center">No courses...</h4>
-    {{/each}}
-</div>
-{{/if}}
+</section>

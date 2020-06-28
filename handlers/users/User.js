@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model: User } = mongoose;
-const { String, Number, ObjectId } = Schema.Types;
+const { String, ObjectId } = Schema.Types;
 const bcrypt = require("bcrypt");
 const saltRounds = 15;
 
@@ -14,9 +14,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    enrolledCourses: [{
+    linkedPlays: [{
         type: ObjectId,
-        ref: "Model"
+        ref: "Play"
     }]
 });
 
