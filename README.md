@@ -8,4 +8,4 @@ To start the application:
 
     npm run start
 
-http://localhost:7070/
+http://localhost:3000/

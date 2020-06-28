@@ -2,17 +2,17 @@
     <h2>Register</h2>
     <div class="on-dark">
         <label for="username">Username:</label>
-        <input type="text" placeholder="Steven" value="{{ oldInput.username }}" autofocus>
+        <input type="text" placeholder="Steven" name="username" value="{{ oldInput.username }}" autofocus>
     </div>
 
     <div class="on-dark">
         <label for="password">Password:</label>
-        <input type="password" placeholder="********" value="{{ oldInput.password }}">
+        <input type="password" placeholder="********" name="password" value="{{ oldInput.password }}">
     </div>
 
     <div class="on-dark">
         <label for="repeatPassword">Repeat Password:</label>
-        <input type="password" placeholder="********" value="{{ oldInput.repeatPassword }}">
+        <input type="password" placeholder="********" name="repeatPassword" value="{{ oldInput.repeatPassword }}">
     </div>
 
     <button class="btn" type="submit">Register</button>

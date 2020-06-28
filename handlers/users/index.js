@@ -19,6 +19,7 @@ module.exports = {
     post: {
         register(req, res, next) {
             const { username, password, repeatPassword } = req.body;
+            console.log(req.body);
             if (password !== repeatPassword) {
                 res.render("users/register.hbs", {
                     message: "Passwords do not match!",
@@ -41,7 +42,7 @@ module.exports = {
         },
         login(req, res, next) {
             const { username, password } = req.body;
-            // console.log(username, password);
+            console.log(username, password);
             User.findOne({ username }).then((user) => {
                 return Promise.all([user.passwordsMatch(password), user])
             }).then(([match, user]) => {

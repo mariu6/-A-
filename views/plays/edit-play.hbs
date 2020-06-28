@@ -1,19 +1,19 @@
-<form class="theater-form" action="/plays/create-play/:playId" method="POST">
+<form class="theater-form" action="/plays/edit-play/{{playId}}" method="POST">
     <h1>Edit Theater</h1>
     <div>
         <label for="title">Theater Title:</label>
-        <input type="text" placeholder="Theater name" value="" autofocus>
+        <input type="text" placeholder="Theater name" name="title" value="{{play.title}}" autofocus>
     </div>
     <div>
         <label for="description">Theater Description:</label>
-        <textarea placeholder="Description"></textarea>
+        <textarea placeholder="Description" name="description">{{play.description}}</textarea>
     </div>
     <div>
         <label for="imageUrl">Image url:</label>
-        <input type="text" placeholder="Image Url" value="">
+        <input type="text" placeholder="Image Url" name="imageUrl" value="{{play.imageUrl}}">
     </div>
     <div class="check">
-        <input type="checkbox" id="check-box">
+        <input type="checkbox" id="check-box" name="isPublic">
         <label for="check-box">Public</label>
     </div>
     <button class="btn" type="submit">Submit</button>
